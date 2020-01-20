@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
-    "test": "lab"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,6 @@
   "dependencies": {
     "@hapi/code": "^8.0.1",
     "@hapi/hapi": "^19.0.5",
-    "@hapi/hoek": "^9.0.2",
-    "@hapi/lab": "^21.0.0"
+    "@hapi/lab": "^22.0.3"
   }
 }
