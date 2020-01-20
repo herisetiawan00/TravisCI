@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/heriblastz/TravisCI#readme",
   "dependencies": {
-    "@hapi/hapi": "^19.0.5"
+    "@hapi/code": "^8.0.1",
+    "@hapi/hapi": "^19.0.5",
+    "@hapi/lab": "^22.0.3"
   }
 }
