@@ -19,6 +19,7 @@
   "dependencies": {
     "@hapi/code": "^8.0.1",
     "@hapi/hapi": "^19.0.5",
+    "@hapi/hoek": "^9.0.2",
     "@hapi/lab": "^22.0.3"
   }
 }
