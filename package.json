@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "lab"
+    "test": "lab",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
