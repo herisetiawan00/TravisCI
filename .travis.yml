@@ -5,3 +5,4 @@ deploy:
   provider: heroku
   api_key:
     secure: c9fd9958-835d-4515-9a7a-ea6d5558c491
+  app: worlddemo
