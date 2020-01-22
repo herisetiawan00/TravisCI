@@ -7,7 +7,8 @@ const catalogueSchema = new Schema({
   description: String,
   price: Number,
   owner: String,
-  imgUri: String
+  imgUri: String,
+  postedAt: Date
 })
 
 const Catalogue = mongoose.model('catalogues', catalogueSchema)

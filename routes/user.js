@@ -2,8 +2,13 @@ const { user } = require('../controllers')
 
 module.exports = [
   {
-    method: 'Post',
+    method: 'POST',
     path: '/register',
     handler: user.register
+  },
+  {
+    method: 'POST',
+    path: '/login',
+    handler: user.login
   }
 ]
