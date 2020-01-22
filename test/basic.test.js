@@ -1,8 +1,9 @@
 const Lab = require('@hapi/lab')
 const { expect } = require('@hapi/code')
 const { it, beforeEach, afterEach, describe } = exports.lab = Lab.script()
-const { init } = require('../lib/server')
+const { init, register } = require('../lib/server')
 
+register()
 describe('GET /', () => {
   let server
 
