@@ -11,6 +11,6 @@ const userSchema = new Schema({
   address: String
 })
 
-const User = mongoose.model('catalogues', userSchema)
+const User = mongoose.model('users', userSchema)
 
 module.exports = { User }
