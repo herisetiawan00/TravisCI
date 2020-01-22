@@ -1,9 +1,9 @@
-const handler = require('../controllers/basic')
+const { basic } = require('../controllers')
 
 module.exports = [
   {
     method: 'GET',
     path: '/',
-    handler: handler.basic
+    handler: basic.root
   }
 ]

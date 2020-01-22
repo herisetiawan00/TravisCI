@@ -24,6 +24,7 @@
   "dependencies": {
     "@hapi/code": "^8.0.1",
     "@hapi/hapi": "^19.0.5",
-    "@hapi/lab": "^22.0.3"
+    "@hapi/lab": "^22.0.3",
+    "mongoose": "^5.8.9"
   }
 }
