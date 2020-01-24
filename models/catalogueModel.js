@@ -7,8 +7,11 @@ const catalogueSchema = new Schema({
   description: String,
   price: Number,
   owner: String,
-  imgUri: String,
-  postedAt: Date
+  image: String,
+  postedAt: Date,
+  stock: Number,
+  review: Array,
+  categories: Array
 })
 
 const Catalogue = mongoose.model('catalogues', catalogueSchema)
