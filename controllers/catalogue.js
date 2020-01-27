@@ -11,5 +11,5 @@ exports.postCatalogue = async (req, h) => {
 }
 
 exports.getCatalogue = async (req, h) => {
-  return Catalogue.find({})
+  return req.query.category == null ? Catalogue.find({}) : Catalogue.find({ category: req.query.category })
 }
