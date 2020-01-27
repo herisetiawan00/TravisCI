@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const catalogueSchema = new Schema({
   title: String,
+  id: Number,
   description: String,
   price: Number,
   owner: String,
