@@ -47,15 +47,15 @@ exports.login = async (req, h) => {
     email,
     password
   } = req.payload
-  const getEmail = await User.find({
-    email: email
+  const getEmail = await User.findOne({
+    $or: [
+      { email: email },
+      { username: email }
+    ]
   })
-  const getUsername = await User.find({
-    username: email
-  })
-  if ((getEmail !== [] &&
-    sha256(password) === getEmail[0].password) || (getUsername !== [] && sha256(password) === getUsername[0].password)) {
-    return h.response({ success: true, data: getEmail }).code(200)
+  if (getEmail.length !== 0 &&
+    sha256(password) === getEmail.password) {
+    return h.response({ success: true, detail: getEmail }).code(200)
   } else {
     return h.response({ success: false, message: 'Email or password not valid' }).code(403)
   }

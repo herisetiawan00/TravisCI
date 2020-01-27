@@ -9,3 +9,7 @@ exports.postCatalogue = async (req, h) => {
   })
   return h.response({ success: true }).code(201)
 }
+
+exports.getCatalogue = async (req, h) => {
+  return Catalogue.find({})
+}
