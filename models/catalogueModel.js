@@ -8,7 +8,7 @@ const catalogueSchema = new Schema({
   description: String,
   price: Number,
   owner: String,
-  image: String,
+  image: Array,
   postedAt: Date,
   stock: Number,
   review: Array,
