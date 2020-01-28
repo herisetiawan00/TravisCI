@@ -11,5 +11,18 @@ exports.postCatalogue = async (req, h) => {
 }
 
 exports.getCatalogue = async (req, h) => {
-  return req.query.category == null ? Catalogue.find({}) : Catalogue.find({ categories: { $in: [req.query.category] } })
+  const { category, q } = req.query
+  const parameter = {}
+  if (category != null) {
+    Object.assign(parameter, { categories: { $in: [category] } })
+  }
+  if (q != null) {
+    Object.assign(parameter, {
+      $or: [
+        { title: { $regex: q, $options: 'i' } },
+        { description: { $regex: q, $options: 'i' } }
+      ]
+    })
+  }
+  return Catalogue.find(parameter)
 }
