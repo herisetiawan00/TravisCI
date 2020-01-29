@@ -40,7 +40,7 @@ const addCart = async ({ email, id }) => {
 }
 exports.getCart = async (req, h) => {
   if (checkEmail(req.payload.email, req.payload.password)) {
-    return Cart.find({ user: req.payload.email })
+    return Cart.findOne({ user: req.payload.email })
   }
 }
 
