@@ -49,6 +49,16 @@ const removeCart = async ({ email, id }) => {
   }
   await Cart.updateOne({ user: email }, { products: cart.products })
 }
+
+const customCart = async ({ email, id, quantity }) => {
+  const cart = await Cart.findOne({ user: email })
+  for (var i = 0; i < cart.products.length; i++) {
+    if (cart.products[i].id === id) {
+      cart.products[i].quantity = quantity
+    }
+  }
+  await Cart.updateOne({ user: email }, { products: cart.products })
+}
 exports.getCart = async (req, h) => {
   if (checkEmail(req.payload.email, req.payload.password)) {
     const cart = await Cart.findOne({ user: req.payload.email })
@@ -78,6 +88,15 @@ exports.addCart = async (req, h) => {
 exports.removeCart = async (req, h) => {
   if (checkEmail(req.payload.email, req.payload.password)) {
     removeCart({ email: req.payload.email, id: req.payload.id })
+    return h.response({ success: true }).code(201)
+  } else {
+    return h.response({ success: false, message: 'Forbidden' }).code(403)
+  }
+}
+
+exports.customCart = async (req, h) => {
+  if (checkEmail(req.payload.email, req.payload.password)) {
+    customCart({ email: req.payload.email, id: req.payload.id, quantity: req.payload.quantity })
     return h.response({ success: true }).code(201)
   } else {
     return h.response({ success: false, message: 'Forbidden' }).code(403)

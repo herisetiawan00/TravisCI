@@ -15,5 +15,10 @@ module.exports = [
     method: 'POST',
     path: '/cart/remove',
     handler: cart.removeCart
+  },
+  {
+    method: 'POST',
+    path: '/cart/custom',
+    handler: cart.customCart
   }
 ]
