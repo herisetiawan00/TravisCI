@@ -39,6 +39,16 @@ const addCart = async ({ email, id }) => {
     })
   }
 }
+
+const removeCart = async ({ email, id }) => {
+  const cart = await Cart.findOne({ user: email })
+  for (var i = 0; i < cart.products.length; i++) {
+    if (cart.products[i].id === id) {
+      cart.products[i].quantity = cart.products[i].quantity - 1
+    }
+  }
+  await Cart.updateOne({ user: email }, { products: cart.products })
+}
 exports.getCart = async (req, h) => {
   if (checkEmail(req.payload.email, req.payload.password)) {
     const cart = await Cart.findOne({ user: req.payload.email })
@@ -59,6 +69,15 @@ exports.getCart = async (req, h) => {
 exports.addCart = async (req, h) => {
   if (checkEmail(req.payload.email, req.payload.password)) {
     addCart({ email: req.payload.email, id: req.payload.id })
+    return h.response({ success: true }).code(201)
+  } else {
+    return h.response({ success: false, message: 'Forbidden' }).code(403)
+  }
+}
+
+exports.removeCart = async (req, h) => {
+  if (checkEmail(req.payload.email, req.payload.password)) {
+    removeCart({ email: req.payload.email, id: req.payload.id })
     return h.response({ success: true }).code(201)
   } else {
     return h.response({ success: false, message: 'Forbidden' }).code(403)
