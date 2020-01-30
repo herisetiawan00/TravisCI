@@ -1,5 +1,6 @@
 const { Cart } = require('../models/cartModel')
 const { User } = require('../models/userModel')
+const { Catalogue } = require('../models/catalogueModel')
 
 const checkEmail = async (email, password) => {
   const getEmail = await User.findOne({ email: email })
@@ -40,7 +41,18 @@ const addCart = async ({ email, id }) => {
 }
 exports.getCart = async (req, h) => {
   if (checkEmail(req.payload.email, req.payload.password)) {
-    return Cart.findOne({ user: req.payload.email })
+    const cart = await Cart.findOne({ user: req.payload.email })
+    const catalogue = await Catalogue.find({})
+    const cartProducts = (cart.products)
+      .map(
+        (x) =>
+          Object.assign(x,
+            (catalogue
+              .filter(
+                (y) => y.id === x.id)[0]._doc)
+          )
+      )
+    return cartProducts
   }
 }
 
