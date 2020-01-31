@@ -47,7 +47,7 @@ const removeCart = async ({ email, id }) => {
       cart.products[i].quantity = cart.products[i].quantity - 1
     }
   }
-  await Cart.updateOne({ user: email }, { products: cart.products })
+  await Cart.updateOne({ user: email }, { products: cart.products.filter((x) => x.quantity > 0) })
 }
 
 const customCart = async ({ email, id, quantity }) => {
